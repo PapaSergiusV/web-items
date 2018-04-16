@@ -18,6 +18,9 @@ class LinkedList
         this.addLast(node[i]);
     }
 	}
+  add(node) {
+    this.addLast(node);
+  }
   addFirst(node) {
     if (this.count() >= 2) {
       let temp = this.first;
@@ -76,16 +79,104 @@ class LinkedList
     }
     else return false;
   }
+  remove(value) {
+    if (this.first != null) {
+      if (this.first.data == value)
+        this.removeFirst();
+      else if (this.last.data == value)
+        this.removeLast();
+      else {
+        var it = nodeNextGen(this.first);
+        var x = it.next();
+        while (!x.done) {
+          if (x.value.data == value) {
+            var left = x.value.previous;
+            var right = x.value.next;
+            x.value = null;
+            left.next = right;
+            right.previous = left;
+            break;
+          }
+          x = it.next();
+        }
+      }
+    }
+  }
+  removeFirst() {
+    if (this.count() >= 2) {
+      var temp = this.first.next;
+      this.first = null;
+      temp.previous = null;
+      this.first = temp;
+      temp = null;
+    }
+    else if (this.first != null)
+      this.first = null;
+  }
+  removeLast() {
+    if (this.count() >= 2) {
+      var temp = this.last.previous;
+      this.last = null;
+      temp.next = null;
+      this.last = temp;
+      temp = null;
+    }
+    else if (this.first != null)
+      this.first = null;
+  }
 }
 
-let list = new LinkedList(2, 3);
+function* nodeNextGen(node) {
+  var x = node;
+  while(x != null) {
+    yield x;
+    x = x.next;
+  }
+}
+
+// TESTS
+
+let list = new LinkedList(2, 3, 4);
     list.addFirst(1);
 let empty = new LinkedList();
 let one = new LinkedList();
 one.addLast(1);
 console.assert(empty.count() == 0);
 console.assert(one.count() == 1);
-console.assert(list.count() == 3);
+console.assert(list.count() == 4);
 console.assert(list.first.data == 1);
 console.assert(list.first.next.data == 2);
-console.assert(list.last.data == 3);
+console.assert(list.first.next.next.data == 3);
+console.assert(list.last.data == 4);
+
+
+//Working generator
+/*
+function* iter() {
+  var x = 1;
+  while (x <= 10) {
+    yield x++;
+  }
+}
+
+var it = iter();
+
+var x = it.next();
+while(!x.done) {
+  console.log(x.value);
+  x = it.next();
+}
+*/
+
+/*
+EXAMPLE function/cycle for nodeNextGen
+
+function gen(list) {
+  var it = nodeNextGen(list.first);
+  var x = it.next();
+  while (!x.done) {
+    console.log(x.value);
+    x = it.next();
+  }
+}
+*/
