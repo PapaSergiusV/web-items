@@ -102,6 +102,29 @@ class LinkedList
       }
     }
   }
+  removeCond(cond) {
+    if (this.first != null) {
+      if (cond(this.first.data))
+        this.removeFirst();
+      else if (cond(this.last.data))
+        this.removeLast();
+      else {
+        var it = nodeNextGen(this.first);
+        var x = it.next();
+        while (!x.done) {
+          if (cond(x.value.data)) {
+            var left = x.value.previous;
+            var right = x.value.next;
+            x.value = null;
+            left.next = right;
+            right.previous = left;
+            break;
+          }
+          x = it.next();
+        }
+      }
+    }
+  }
   removeFirst() {
     if (this.count() >= 2) {
       var temp = this.first.next;
@@ -149,9 +172,21 @@ console.assert(list.first.next.data == 2);
 console.assert(list.first.next.next.data == 3);
 console.assert(list.last.data == 4);
 
+class Test 
+{
+  constructor(name, key) {
+    this.name = name;
+    this.key = key;
+  }
+}
 
-//Working generator
+let objList = new LinkedList(new Test('one', 1), new Test('two', 2), new Test('three', 3));
+
+objList.removeCond(x => x.name == "two");
+
 /*
+Working generator
+
 function* iter() {
   var x = 1;
   while (x <= 10) {
@@ -169,7 +204,7 @@ while(!x.done) {
 */
 
 /*
-EXAMPLE function/cycle for nodeNextGen
+EXAMPLE function/cycle for nodeNextGen()
 
 function gen(list) {
   var it = nodeNextGen(list.first);
