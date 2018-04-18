@@ -126,23 +126,32 @@ class LinkedList
     }
   }
   removeFirst() {
-    if (this.count() >= 2) {
+    if (this.count() > 2) {          
       var temp = this.first.next;
       this.first = null;
       temp.previous = null;
       this.first = temp;
       temp = null;
     }
+    else if (this.count() == 2) {
+      this.first = this.last;
+      this.first.previous = null;
+      this.last = null;
+    }
     else if (this.first != null)
       this.first = null;
   }
   removeLast() {
-    if (this.count() >= 2) {
+    if (this.count() > 2) {          
       var temp = this.last.previous;
       this.last = null;
       temp.next = null;
       this.last = temp;
       temp = null;
+    }
+    else if (this.count() == 2) {
+      this.last = null;
+      this.first.next = null;
     }
     else if (this.first != null)
       this.first = null;
@@ -158,7 +167,7 @@ function* nodeNextGen(node) {
 }
 
 // TESTS
-
+/*
 let list = new LinkedList(2, 3, 4);
     list.addFirst(1);
 let empty = new LinkedList();
@@ -180,10 +189,11 @@ class Test
   }
 }
 
-let objList = new LinkedList(new Test('one', 1), new Test('two', 2), new Test('three', 3));
+let objList = new LinkedList(new Test('one', 1), new Test('two', 2), 
+  new Test('trash', 0), new Test('three', 3));
 
-objList.removeCond(x => x.name == "two");
-
+objList.removeCond(x => x.name == "trash");
+*/
 /*
 Working generator
 
