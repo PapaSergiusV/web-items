@@ -102,7 +102,7 @@ class LinkedList
       }
     }
   }
-  removeCond(cond) {
+  removeFirstByCond(cond) {
     if (this.first != null) {
       if (cond(this.first.data))
         this.removeFirst();
@@ -122,6 +122,25 @@ class LinkedList
           }
           x = it.next();
         }
+      }
+    }
+  }
+  removeAllByCond(cond) {
+    if (this.first != null) 
+      this.RABC_assist(this.first, cond);
+  }
+  RABC_assist(node, cond) {
+    if (node.next != null)
+      this.RABC_assist(node.next, cond);
+    if (cond(node)) {
+      if (node == this.first)
+        this.removeFirst();
+      else if (node == this.last)
+        this.removeLast();
+      else {
+        node.previous.next = node.next;
+        node.next.previous = node.previous;
+        node = null;
       }
     }
   }
@@ -165,9 +184,9 @@ function* nodeNextGen(node) {
     x = x.next;
   }
 }
-
-// TESTS
 /*
+// TESTS
+
 let list = new LinkedList(2, 3, 4);
     list.addFirst(1);
 let empty = new LinkedList();
@@ -190,9 +209,10 @@ class Test
 }
 
 let objList = new LinkedList(new Test('one', 1), new Test('two', 2), 
-  new Test('trash', 0), new Test('three', 3));
+  new Test('trash', 0), new Test('three', 3), new Test('four', 4));
 
-objList.removeCond(x => x.name == "trash");
+objList.removeFirstByCond(x => x.name == "trash");
+objList.removeAllByCond(x => x.data.key > 2);
 */
 /*
 Working generator
