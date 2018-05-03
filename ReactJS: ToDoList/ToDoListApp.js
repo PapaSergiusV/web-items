@@ -85,8 +85,8 @@ class NewTask extends Component {
   }
   addNewTask() {
     var text = this.state.typed;
+    text = text.replace(/\s{2,}/g, ' ').replace(/^\s+|>|</g, '');
     if (text.length > 0) {
-      text = text.replace(/^\s+|>|</g, '').replace(/\s{2,}/g, ' ');
       this.props.addNewTask(text);
       this.refs.field.value = '';
       this.setState({typed: ''});
