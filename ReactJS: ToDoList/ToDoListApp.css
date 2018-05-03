@@ -1,0 +1,49 @@
+body {
+	font-family: 'sans-serif';
+}
+.title {
+	text-align: center;
+	margin: 10px;
+}
+.wrapper {
+	width: 300px;
+	position: absolute;
+	background-color: #ded;
+	border: 1px solid #aca;
+	border-radius: 2px;
+	padding: 5px;
+}
+.newTaskField {
+	width: 100%;
+}
+.newTaskInput {
+	width: 80%;
+}
+.newTaskButton {
+	width: 20%;
+}
+.tasks {
+	width: 100%;
+	border: 1px solid #aca;
+	background-color: #fff;
+	margin-top: 10px;
+}
+.taskField {
+	margin: 5px 0px 5px 20px;
+	overflow: hidden;
+	max-width: 78%;
+}
+.notDone {
+	cursor: pointer;
+}
+.done {
+	cursor: pointer;
+	text-decoration-line: line-through;
+	color: gray;
+}
+.taskButton {
+	position: absolute;
+	right: 10px;
+	margin-top: 4px;
+	border: 1px solid gray;
+}
