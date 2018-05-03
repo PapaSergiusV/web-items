@@ -86,10 +86,9 @@ class NewTask extends Component {
   addNewTask() {
     var text = this.state.typed;
     if (text.length > 0) {
-      this.refs.field.value = '';
-      /*if (text.length > 22)
-        text = text.slice(0, 21) + '...';*/
+      text = text.replace(/^\s+|>|</g, '').replace(/\s{2,}/g, ' ');
       this.props.addNewTask(text);
+      this.refs.field.value = '';
       this.setState({typed: ''});
     }
   }
@@ -105,12 +104,10 @@ class TaskList extends Component {
   }
   render() {
     const tasks = this.props.tasks.map(x => 
-      <div key={x.id} className="col-xs-12" onClick={this.handleClick}> 
-        <div className="row">
-          <div className="col-xs-9 taskField"><Task text={x.text} done={x.done}/></div>
-          <div className="col-xs-2 col-xs-offset-1">
-            <button id={x.text} onClick={this.delTask} className="taskButton">X</button>
-          </div>
+      <div key={x.id} onClick={this.handleClick} className="row">
+        <div className="col-xs-9 taskField"><Task text={x.text} done={x.done}/></div>
+        <div className="col-xs-2 col-xs-offset-1">
+          <button id={x.text} onClick={this.delTask} className="taskButton">X</button>
         </div>
       </div>);
     return (
