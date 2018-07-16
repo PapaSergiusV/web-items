@@ -1,0 +1,11 @@
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\bin\Debug\netcoreapp2.0\ToDoDesk.deps.json
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\bin\Debug\netcoreapp2.0\ToDoDesk.runtimeconfig.json
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\bin\Debug\netcoreapp2.0\ToDoDesk.runtimeconfig.dev.json
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\bin\Debug\netcoreapp2.0\ToDoDesk.dll
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\bin\Debug\netcoreapp2.0\ToDoDesk.pdb
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\obj\Debug\netcoreapp2.0\ToDoDesk.csprojAssemblyReference.cache
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\obj\Debug\netcoreapp2.0\ToDoDesk.csproj.CoreCompileInputs.cache
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\obj\Debug\netcoreapp2.0\ToDoDesk.AssemblyInfoInputs.cache
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\obj\Debug\netcoreapp2.0\ToDoDesk.AssemblyInfo.cs
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\obj\Debug\netcoreapp2.0\ToDoDesk.dll
+C:\Users\Сергей\Documents\Программирование\Web\ToDoDesk\ToDoDesk\obj\Debug\netcoreapp2.0\ToDoDesk.pdb
